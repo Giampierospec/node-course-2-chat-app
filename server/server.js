@@ -16,6 +16,14 @@ io.on('connection',(socket)=>{
     socket.on('disconnect',()=>{
         console.log('Client disconnected');
     });
+    socket.emit('newMessage',{
+        from:"Giampiero",
+        text:"Hello my name is Giampiero",
+        createdAt: Date.now()
+    });
+    socket.on('createMessage',(msg)=>{
+        console.log('create Message',msg)
+    });
 });
 app.use(express.static(publicPath));
 var port = process.env.PORT;
