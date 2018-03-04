@@ -16,13 +16,13 @@ io.on('connection',(socket)=>{
     socket.on('disconnect',()=>{
         console.log('Client disconnected');
     });
-    socket.emit('newMessage',{
-        from:"Giampiero",
-        text:"Hello my name is Giampiero",
-        createdAt: Date.now()
-    });
     socket.on('createMessage',(msg)=>{
-        console.log('create Message',msg)
+        console.log('create Message',msg);
+        io.emit('newMessage',{
+            from: msg.from,
+            text: msg.text,
+            createdAt: new Date().getTime()
+        })
     });
 });
 app.use(express.static(publicPath));
