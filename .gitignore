@@ -3,3 +3,7 @@ node_modules/
 
 #Ignore config.json
 config/config.json
+
+#Ignore public/lib
+
+public/lib/

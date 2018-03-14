@@ -1,0 +1,14 @@
+{
+  "name": "chat-app",
+  "description": "this is a chat app from a tutorial",
+  "main": "index.js",
+  "authors": [
+    "Giampiero Specogna <giampi_12@hotmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Giampierospec/node-course-2-chat-app",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

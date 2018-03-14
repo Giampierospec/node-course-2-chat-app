@@ -1,0 +1,23 @@
+.btn {
+    padding: 0.5em 1em;
+    background-color:#FFF;
+    border-radius: 5%;
+    color: #000;
+    border: 1px solid transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.btn-chat{
+    color:#FFF;
+    background-color:goldenrod;
+    border-color:#CCC;
+}
+.btn-chat:hover{
+    background-color:yellowgreen;
+    cursor:pointer;
+}
+.input-chat{
+    border-radius:5%;
+    border: 1px solid #CCC;
+    padding: 0.5em 1em;
+}
