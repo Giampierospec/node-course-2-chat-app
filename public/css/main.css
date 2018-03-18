@@ -4,6 +4,7 @@
     border-radius: 5%;
     color: #000;
     border: 1px solid transparent;
+    display: inline-block;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 

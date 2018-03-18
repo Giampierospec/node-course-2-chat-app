@@ -11,7 +11,7 @@ console.log(publicPath);
 var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
-const {generateMessage} = require('./utils/message');
+const {generateMessage,generateLocationMessage} = require('./utils/message');
 io.on('connection',(socket)=>{
     console.log('New User Connected');
     socket.on('disconnect',()=>{
@@ -23,11 +23,9 @@ io.on('connection',(socket)=>{
         
         io.emit('newMessage',generateMessage(msg.from, msg.text));
         callback('This is from the server');
-        // socket.broadcast.emit('newMessage',{
-        //     from: msg.from,
-        //     text: msg.text,
-        //     createdAt: new Date().getTime()
-        // });
+    });
+    socket.on('createLocationMessage',(coords)=>{
+        io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude,coords.longitude));
     });
 });
 app.use(express.static(publicPath));
