@@ -4,13 +4,16 @@ locationButton.click(function(e){
     if(!navigator.geolocation){
         return alert('Geolocation not supported by your browser');
     }
+    locationButton.attr('disabled', 'true').text('Sending Location...');
     navigator.geolocation.getCurrentPosition(function(position){
         socket.emit('createLocationMessage',{
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
         });
+        locationButton.removeAttr("disabled").text('Send Location');
     },function(){
      alert('Unable to fetch Location');
+        locationButton.removeAttr("disabled").text('Send Location');
     })
 });
 (function(){
@@ -47,7 +50,7 @@ locationButton.click(function(e){
                 from:'User',
                 text: $("[name='message']").val()
             },function(){
-                
+                $("[name='message']").val("");
             });
             return false;
     });
