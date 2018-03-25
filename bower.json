@@ -9,6 +9,7 @@
   "homepage": "https://github.com/Giampierospec/node-course-2-chat-app",
   "private": true,
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "moment": "^2.21.0"
   }
 }

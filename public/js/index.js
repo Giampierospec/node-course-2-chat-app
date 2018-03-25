@@ -18,9 +18,10 @@ locationButton.click(function(e){
 });
 (function(){
     socket.on('newLocationMessage',function(msg){
+        var formattedTime = moment(msg.createdAt).format('h:mm a');
         var li = $("<li></li>");
         var a = $("<a target='_blank'>My current Location</a>");
-        li.text(`${msg.from}: `);
+        li.text(`${msg.from} ${formattedTime}: `);
         a.attr('href',msg.url);
 
         li.append(a);
@@ -33,9 +34,10 @@ locationButton.click(function(e){
         console.log('Disconnected from server');
     });
     socket.on('newMessage',function(msg){
+        var formattedTime = moment(msg.createdAt).format('h:mm a');
         console.log('New message', msg);
         var li = $("<li></li>");
-        li.text(`${msg.from}: ${msg.text}`);
+        li.text(`${msg.from} ${formattedTime}: ${msg.text}`);
         $("#messages").append(li);
     });
     socket.on('welcome',function(msg){
