@@ -19,13 +19,15 @@ locationButton.click(function(e){
 (function(){
     socket.on('newLocationMessage',function(msg){
         var formattedTime = moment(msg.createdAt).format('h:mm a');
-        var li = $("<li></li>");
-        var a = $("<a target='_blank'>My current Location</a>");
-        li.text(`${msg.from} ${formattedTime}: `);
-        a.attr('href',msg.url);
-
-        li.append(a);
-        $("#messages").append(li);
+        var template = $("#location-message-template").html();
+        var html = Mustache.render(template,{
+            text: msg.text,
+            from: msg.from,
+            createdAt: formattedTime,
+            url: msg.url
+        });
+        $("#messages").append(html);
+        
     });
     socket.on('connect', function () {
         console.log('Connected to server');
@@ -34,11 +36,14 @@ locationButton.click(function(e){
         console.log('Disconnected from server');
     });
     socket.on('newMessage',function(msg){
+        var template = $("#message-template").html();
         var formattedTime = moment(msg.createdAt).format('h:mm a');
-        console.log('New message', msg);
-        var li = $("<li></li>");
-        li.text(`${msg.from} ${formattedTime}: ${msg.text}`);
-        $("#messages").append(li);
+        var html = Mustache.render(template,{
+            text:msg.text,
+            from: msg.from,
+            createdAt: formattedTime
+        });
+        $("#messages").append(html);
     });
     socket.on('welcome',function(msg){
         console.log('Welcome message', msg);
