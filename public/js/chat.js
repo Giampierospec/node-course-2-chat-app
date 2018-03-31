@@ -90,7 +90,6 @@ locationButton.click(function(e){
 
     $("#message-form").submit((e)=>{
             socket.emit('createMessage',{
-                from:'User',
                 text: $("[name='message']").val()
             },function(){
                 $("[name='message']").val("");
